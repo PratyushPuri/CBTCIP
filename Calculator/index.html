@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+        * {
+            font-family: 'Ubuntu', sans-serif;
+        }
+
+
+
+        body {
+            background:linear-gradient(to right, #cc2b5e 0%, #753a88 100%);
+        }
+        .calculator {
+            border-color: black;
+            background-color: #f5f5f5;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        .calculator input[type="text"] {
+            border-radius: 5%;
+            border-color: black;
+            font-size: 24px;
+            text-align: right;
+            margin-bottom: 10px;
+        }
+
+        .calculator button {
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;color:white;"><b>CipherByte Web Development Internship</b></h1><br>
+    
+    <h3 style="text-align: center;color:white;"><b>By - Pratyush Puri</b></h3>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-4 calculator">
+                <h3 class="text-center"><b>Calculator</b></h3>
+                <input type="text" id="display" class="form-control mb-2" readonly>
+                <div class="row">
+                    <div class="col-md-3">
+                        <button class="btn btn-primary btn-block mb-2" onclick="appendToDisplay('7')">7</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary btn-block mb-2" onclick="appendToDisplay('8')">8</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary btn-block mb-2" onclick="appendToDisplay('9')">9</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-warning btn-block mb-2" onclick="appendToDisplay('+')">+</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <button class="btn btn-primary btn-block mb-2" onclick="appendToDisplay('4')">4</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary btn-block mb-2" onclick="appendToDisplay('5')">5</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary btn-block mb-2" onclick="appendToDisplay('6')">6</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-warning btn-block mb-2" onclick="appendToDisplay('-')">-</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <button class="btn btn-primary btn-block mb-2" onclick="appendToDisplay('1')">1</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary btn-block mb-2" onclick="appendToDisplay('2')">2</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary btn-block mb-2" onclick="appendToDisplay('3')">3</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-warning btn-block mb-2" onclick="appendToDisplay('*')">*</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <button class="btn btn-dark btn-block mb-2" onclick="appendToDisplay('.')">.</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-danger btn-block mb-2" onclick="clearDisplay()">C</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-primary btn-block mb-2" onclick="appendToDisplay('0')">0</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-success btn-block mb-2" onclick="calculate()">=</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <button class="btn btn-warning btn-block mb-2" onclick="appendToDisplay('/')">/</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-info btn-block mb-2" onclick="appendToDisplay('%')">%</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-info btn-block mb-2" onclick="calculateSquareRoot()">√</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button class="btn btn-info btn-block mb-2" onclick="calculateSquare()">x²</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function calculate() {
+            try {
+                const result = eval(document.getElementById('display').value);
+                document.getElementById('display').value = result;
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+
+        function calculateSquareRoot() {
+            const inputValue = parseFloat(document.getElementById('display').value);
+            if (!isNaN(inputValue)) {
+                const result = Math.sqrt(inputValue);
+                document.getElementById('display').value = result;
+            } else {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+
+        function calculateSquare() {
+            const inputValue = parseFloat(document.getElementById('display').value);
+            if (!isNaN(inputValue)) {
+                const result = inputValue * inputValue;
+                document.getElementById('display').value = result;
+            } else {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>

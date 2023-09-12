@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Capriola&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz@10..48&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+      body {
+            background: linear-gradient(to bottom, #000428, #004e92);
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            font-family: 'Capriola', sans-serif;
+        }
+        .container {
+
+            background: linear-gradient(to right, #ddd6f3, #faaca8);
+            background-attachment: fixed;
+
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .task-list {
+            list-style: none;
+            padding: 0;
+        }
+        .task-item {
+            color: #160039;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .task-item.completed {
+            text-decoration: line-through;
+            color: #160039;
+        }
+        .delete-btn {
+            color: rgb(77, 0, 0);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-4" style="font-family: 'Bricolage Grotesque', sans-serif;"><u>To-Do List</u></h1>
+        <h5 class="text-center " style="font-family: 'Bricolage Grotesque', sans-serif;">By - Pratyush Puri</h5>
+        <ul class="task-list"> <br><br><br>
+        </ul>
+        <div class="input-group mb-3" style="font-family: 'Capriola', sans-serif;">
+            <input type="text" class="form-control" placeholder="Add a new task" aria-label="Add a new task">
+            <button class="btn btn-primary" type="button">Add</button>
+        </div>
+    </div>
+
+    <script src="script.js">
+     
+    </script>
+</body>
+</html>
